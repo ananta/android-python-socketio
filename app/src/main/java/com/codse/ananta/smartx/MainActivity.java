@@ -205,9 +205,8 @@ public class MainActivity extends AppCompatActivity {
                         String upcomingDataFromServer = args[0].toString();
                         Log.e("DDDDDDDDDDDDDD",upcomingDataFromServer+"<-");
 
-                        if(upcomingDataFromServer.equals("")){
+                        if(!upcomingDataFromServer.equals("")){
                             if (usbService != null) { // if UsbService was correctly binded, Send data
-
                                 usbService.write(upcomingDataFromServer.getBytes());
                             }
                         }
