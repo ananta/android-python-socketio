@@ -193,6 +193,28 @@ public class MainActivity extends AppCompatActivity {
         mSocket.emit("message","Connected");
         checkPermission();
 
+        mSocket.on("s", new Emitter.Listener() {
+            @Override
+            public void call(final Object... args) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Handel Serial
+                        Log.e("DDDDDDDDDDDDDD",args.length+"");
+
+                        String upcomingDataFromServer = args[0].toString();
+                        Log.e("DDDDDDDDDDDDDD",upcomingDataFromServer+"<-");
+
+                        if(upcomingDataFromServer.equals("")){
+                            if (usbService != null) { // if UsbService was correctly binded, Send data
+
+                                usbService.write(upcomingDataFromServer.getBytes());
+                            }
+                        }
+                    }
+                });
+            }
+        });
         // Data From Server
         mSocket.on("dataFromServer", new Emitter.Listener() {
             @Override
@@ -207,23 +229,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mSocket.on("s", new Emitter.Listener() {
-            @Override
-            public void call(final Object... args) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Handel Serial
-                        String upcomingDataFromServer = args[1].toString();
-                        if(upcomingDataFromServer.equals("")){
-                            if (usbService != null) { // if UsbService was correctly binded, Send data
-                                usbService.write(upcomingDataFromServer.getBytes());
-                            }
-                        }
-                    }
-                });
-            }
-        });
+
 
         final MyLocation.LocationResult locationResult = new MyLocation.LocationResult(){
             @Override
