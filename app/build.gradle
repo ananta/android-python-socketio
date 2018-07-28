@@ -24,6 +24,9 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    compile 'com.github.nkzawa:socket.io-client:0.3.0'
+    implementation 'com.github.nkzawa:socket.io-client:0.3.0'
+    implementation 'com.github.felHR85:UsbSerial:4.5.2'
+//    compile project(':usb-serial-for-android:usbSerialForAndroid')
+
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }

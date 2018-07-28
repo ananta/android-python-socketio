@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,21 +7,92 @@
     android:orientation="vertical"
     tools:context="com.codse.ananta.smartx.MainActivity">
 
-    <TextView
-        android:id="@+id/locationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your Current Location"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
-        android:id="@+id/getLocationBtn"
+        android:id="@+id/getIpBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get Location"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary"
+        android:text="Start Client"
+        android:textColor="#fff" />
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="Enter Server's IP Address"
+        android:inputType="textPersonName"
+        android:paddingTop="30dp"
+        android:text="http://192.168.100.55:3000" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/scrl"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data From Server"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/txtDataFromServer"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <EditText
+        android:id="@+id/txtBaudrate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/scrl"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="9600" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtBaudrate"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/txtSerial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/textView3"
+            android:ems="10"
+            android:hint="Enter Serial"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnSendSerial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Send Serial" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

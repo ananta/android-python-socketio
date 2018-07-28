@@ -48,4 +48,3 @@ def handleMessage(msg):
 		print "Error "
 		print str(e)
         
-
